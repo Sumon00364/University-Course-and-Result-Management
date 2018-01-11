@@ -1,0 +1,47 @@
+﻿@using System.Web.UI.WebControls
+@model UniversityManagementSystemWebApp.Models.UserDefinedModels.Department
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Save Department</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group, col-md-offset-3">
+            @Html.LabelFor(model => model.DepartmentName, new { @class = " " })
+                @Html.TextBoxFor(model => model.DepartmentName, new { @class = "form-control", PlaceHolder="Please enter department name...", Type="text"})
+                @Html.ValidationMessageFor(model => model.DepartmentName, "", new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group, col-md-offset-3">
+            @Html.LabelFor(model => model.DepartmentCode, htmlAttributes: new { @class = " " })
+                @Html.TextBoxFor(model => model.DepartmentCode, new { @class = "form-control", PlaceHolder="Please enter department code ...." })
+                @Html.ValidationMessageFor(model => model.DepartmentCode, "", new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <button class="btn btn-default">
+        @Html.ActionLink("View All Departments", "Index")
+    </button>
+   
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

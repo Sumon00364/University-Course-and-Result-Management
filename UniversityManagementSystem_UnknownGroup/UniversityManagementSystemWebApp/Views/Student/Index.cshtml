@@ -1,0 +1,113 @@
+﻿@model IEnumerable<UniversityManagementSystemWebApp.Models.UserDefinedModels.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>View All Students</h2>
+
+<p>
+    <button class="btn btn-default">
+        @Html.ActionLink("New Student Registration", "Create")
+    </button>
+</p>
+<style>
+    body {
+        counter-reset: Serial NO;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    tr td:first-child:before {
+        counter-increment: Serial; /*increment the serial counter*/
+        content: counter(Serial); /*Display the Counter*/
+    }
+
+    table, tr, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    tr, th, td {
+        padding: 5px;
+        text-align: center;
+    }
+
+    table tr:nth-child(even) {
+        background-color: blanchedalmond;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: yellowgreen;
+    }
+
+    table th {
+        background-color: black;
+        color: white;
+    }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            Serial No.
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentContactNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentRegistrationNumber)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentContactNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegistrationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentRegistrationNumber)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StudentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StudentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StudentId })
+        </td>*@
+    </tr>
+}
+
+</table>
